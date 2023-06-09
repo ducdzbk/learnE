@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,6 +17,6 @@ public class ProductOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String orderNumber;
-    private String skuCode;
-    private BigDecimal price;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<OrderLineItems> orderLineItemsList;
 }
